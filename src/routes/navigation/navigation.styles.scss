@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background-color: rgba(0,0,0,1);
     color: white;
     text-transform: uppercase;
     text-decoration: none;
@@ -12,8 +12,8 @@
     position: sticky;
     z-index: 10;
     box-shadow: 0 0 10px black;
-    
-    
+    opacity: 0.95;
+    transition: background-color 0.3s, opacity 0.3s;
   
     & .logo-container {
       height: 100%;

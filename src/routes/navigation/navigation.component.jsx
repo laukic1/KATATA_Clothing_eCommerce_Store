@@ -1,30 +1,47 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import { Outlet, Link } from "react-router-dom";
 import { Fragment } from "react";
-import './navigation.styles.scss';
-import { ReactComponent as KatataLogo } from '../../assets/katata-logo-white.svg';
+import "./navigation.styles.scss";
+import { ReactComponent as KatataLogo } from "../../assets/katata-logo-white.svg";
 
 const Navigation = () => {
-    return (
-      <Fragment>
-        <div className='navigation'>
-        <Link className='logo-container' to='/'>
-          <KatataLogo className='logo' />
+  return (
+    <Fragment>
+      <div className="navigation">
+        <Link className="logo-container" to="/">
+          <KatataLogo className="logo" />
+        </Link>
+        <div className="nav-links-container">
+          <Link className="nav-link" to="/">
+            <FontAwesomeIcon
+              icon={faSearch}
+              size="lg"
+              style={{ color: "#ffffff" }}
+            />
           </Link>
-          <div className='nav-links-container'>
-            <Link className='nav-link' to='/shop'>
-                SHOP
-            </Link>
-            <Link className='nav-link' to='/shop'>
-                ABOUT
-            </Link>
-            <Link className='nav-link' to='/shop'>
-                CONTACT
-            </Link>
-            </div>
+          <Link className="nav-link" to="/sign-in">
+            <FontAwesomeIcon
+              icon={faUser}
+              size="lg"
+              style={{ color: "#ffffff" }}
+            />
+          </Link>
+          <Link className="nav-link" to="/shop">
+            SHOP
+          </Link>
+          <Link className="nav-link" to="/shop">
+            ABOUT
+          </Link>
+          <Link className="nav-link" to="/shop">
+            CONTACT
+          </Link>
         </div>
-        <Outlet />
-      </Fragment>
-    );
-  };
+      </div>
+      <Outlet />
+    </Fragment>
+  );
+};
 
-  export default Navigation;
+export default Navigation;
