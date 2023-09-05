@@ -1,6 +1,5 @@
 import "./directory.styles.scss";
 import CategoryItem from "../category-item/category-item.component";
-import { ReactComponent as KatataLogo } from "../../assets/katata-logo.svg";
 import { ReactComponent as CustomerIcon1 } from "../../assets/customer-service1.svg";
 import { ReactComponent as CustomerIcon2 } from "../../assets/customer-service2.svg";
 import { ReactComponent as CustomerIcon3 } from "../../assets/customer-service3.svg";
