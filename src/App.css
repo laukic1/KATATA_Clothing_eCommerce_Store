@@ -1,3 +1,4 @@
+
 .hero-container {
     
     display: flex;
@@ -46,13 +47,16 @@
 
 @keyframes image1 {
     0% {
-        transform: translate(-34%,250%)
+        transform: translate(-34%,250%);
+        
     }
     30% {
         transform: translate(1%,-10%);
+        
     }
     90% {
         transform: translate(0);
+        
     }
     100% {
         transform: translate(0);
@@ -103,7 +107,7 @@
         transform: translate(0)
     }
     50% {
-        transform: translate(-0.2%,1%)
+        transform: translate(-0.2%,1%);
     }
     100% {
         transform: translate(0);
@@ -116,7 +120,7 @@
     font-size: 5em;
     color: rgb(0, 0, 0);
     text-shadow: 0 0 3px black;
-    top: 10%;
+    top: 15%;
     animation: title 2s;
     
 }
@@ -143,7 +147,7 @@
 
 .arrow-icon {
     position: absolute;
-    bottom: 15%;
+    bottom: 10%;
     z-index: 3;
     font-size: 3em;
     animation: arrow 2.5s infinite ease-in-out;

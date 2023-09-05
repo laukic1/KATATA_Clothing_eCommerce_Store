@@ -1,0 +1,39 @@
+.navigation {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    align-items: center;
+    top: 0;
+    position: sticky;
+    z-index: 10;
+    box-shadow: 0 0 10px black;
+    
+    
+  
+    & .logo-container {
+      height: 100%;
+      width: 70px;
+      padding: 15px 15px;
+      
+    }
+  
+    & .nav-links-container {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      
+      
+      & .nav-link {
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+    }
+  }
+  
