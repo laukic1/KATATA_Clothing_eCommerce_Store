@@ -21,7 +21,7 @@ const Navigation = () => {
               style={{ color: "#ffffff" }}
             />
           </Link>
-          <Link className="nav-link" to="/sign-in">
+          <Link className="nav-link" to="/sign-in">       
             <FontAwesomeIcon
               icon={faUser}
               size="lg"
