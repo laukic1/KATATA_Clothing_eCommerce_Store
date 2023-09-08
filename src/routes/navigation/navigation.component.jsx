@@ -21,11 +21,11 @@ const Navigation = () => {
               style={{ color: "#ffffff" }}
             />
           </Link>
-          <Link className="nav-link" to="/sign-in">       
+          <Link className="nav-link" to="/auth">       
             <FontAwesomeIcon
+            className='user-icon'
               icon={faUser}
               size="lg"
-              style={{ color: "#ffffff" }}
             />
           </Link>
           <Link className="nav-link" to="/shop">
