@@ -28,10 +28,16 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+    
+      & .red {
+        color:red;
+        text-shadow: 0 0 5px red;
+      }
 
       & .nav-link {
         padding: 10px 15px;
         cursor: pointer;
+      
 
         &.nav-link:hover {
           color: rgb(203, 203, 203);

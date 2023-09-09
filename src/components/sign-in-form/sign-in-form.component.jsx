@@ -1,6 +1,6 @@
 import Button from '../button/button.component';
 import './sign-in-form.styles.scss'
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { getRedirectResult } from "firebase/auth";
 import {
   signInWithGoogleRedirect,
@@ -8,10 +8,8 @@ import {
   signInAuthWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
-
-
-
 import FormInput from "../form-input/form-input.component";
+import { UserContext } from '../../contexts/user.context';
 
 const defaultFormFields = {
     email: "",
@@ -22,12 +20,14 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
+    const { setCurrentUser } = useContext(UserContext);
+
     const signInHandle = async (event) => {
         event.preventDefault();
         try {
-          const response = await signInAuthWithEmailAndPassword(email, password);
+          const { user } = await signInAuthWithEmailAndPassword(email, password);
           setFormFields(defaultFormFields)
-    console.log(response);
+    setCurrentUser(user);
         } catch (error) {
           if(error.code === "auth/user-not-found") {
             alert("Cannot sign in, user not found.")
