@@ -1,6 +1,6 @@
-import Button from '../button/button.component';
-import './sign-in-form.styles.scss'
-import React, { useContext, useState, useEffect } from "react";
+import Button from "../button/button.component";
+import "./sign-in-form.styles.scss";
+import React, { useState, useEffect } from "react";
 import { getRedirectResult } from "firebase/auth";
 import {
   signInWithGoogleRedirect,
@@ -9,61 +9,52 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
-import { UserContext } from '../../contexts/user.context';
 
 const defaultFormFields = {
-    email: "",
-    password: "",
-}
+  email: "",
+  password: "",
+};
 
 const SignInForm = () => {
-    const [formFields, setFormFields] = useState(defaultFormFields);
-    const { email, password } = formFields;
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { email, password } = formFields;
 
-    const { setCurrentUser } = useContext(UserContext);
-
-    const signInHandle = async (event) => {
-        event.preventDefault();
-        try {
-          const { user } = await signInAuthWithEmailAndPassword(email, password);
-          setFormFields(defaultFormFields)
-    setCurrentUser(user);
-        } catch (error) {
-          if(error.code === "auth/user-not-found") {
-            alert("Cannot sign in, user not found.")
-          } else if (error.code === "auth/wrong-password") {
-            alert("Incorrect email or password.")
-          } else {
-            console.log(error);
-          }
-        }
+  const signInHandle = async (event) => {
+    event.preventDefault();
+    try {
+      await signInAuthWithEmailAndPassword(email, password);
+      setFormFields(defaultFormFields);
+    } catch (error) {
+      if (error.code === "auth/user-not-found") {
+        alert("Cannot sign in, user not found.");
+      } else if (error.code === "auth/wrong-password") {
+        alert("Incorrect email or password.");
+      } else {
+        console.log(error);
       }
+    }
+  };
 
-      useEffect(() => {
-        const logGoogleRedirectUser = async () => {
-          try {
-            const response = await getRedirectResult(auth);
-            if (response) {
-               await createUserDocumentFromAuth(response.user);
-            } else {
-              console.log("user not created");
-            }
-          } catch (error) {
-            console.error("Error", error);
-          }
-        };
-        logGoogleRedirectUser();
-      }, []);
+  useEffect(() => {
+    const logGoogleRedirectUser = async () => {
+      try {
+        await getRedirectResult(auth);
+      } catch (error) {
+        console.log("No user signed in");
+      }
+    };
+    logGoogleRedirectUser();
+  }, []);
 
-      const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormFields({ ...formFields, [name]: value });
-      };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
 
   return (
-    <div className='sign-in-container'>
-    <h2>Already have an account?</h2>
-    <span>Sign in with your email and password.</span>
+    <div className="sign-in-container">
+      <h2>Already have an account?</h2>
+      <span>Sign in with your email and password.</span>
       <form onSubmit={signInHandle}>
         <FormInput
           label="Email"
@@ -81,12 +72,17 @@ const SignInForm = () => {
           name="password"
           value={password}
         />
-        <div className='buttons-container'>
-       <Button type='submit'>Sign In</Button>
-       <Button type='button' buttonType='google' onClick={signInWithGoogleRedirect}>Google Sign In</Button>
-       </div>
+        <div className="buttons-container">
+          <Button type="submit">Sign In</Button>
+          <Button
+            type="button"
+            buttonType="google"
+            onClick={signInWithGoogleRedirect}
+          >
+            Google Sign In
+          </Button>
+        </div>
       </form>
-      
     </div>
   );
 };
