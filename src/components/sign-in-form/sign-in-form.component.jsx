@@ -22,7 +22,7 @@ const SignInForm = () => {
   const signInHandle = async (event) => {
     event.preventDefault();
     try {
-      await signInAuthWithEmailAndPassword(email, password);
+      const { user } = await signInAuthWithEmailAndPassword(email, password);
       setFormFields(defaultFormFields);
     } catch (error) {
       if (error.code === "auth/user-not-found") {
@@ -40,7 +40,7 @@ const SignInForm = () => {
       try {
         await getRedirectResult(auth);
       } catch (error) {
-        console.log("No user signed in");
+        console.error("Error", error);
       }
     };
     logGoogleRedirectUser();

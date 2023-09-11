@@ -1,11 +1,13 @@
-import Button from "../button/button.component";
-import "./sign-up-form.styles.scss";
-import { useState } from "react";
+import Button from '../button/button.component';
+import './sign-up-form.styles.scss'
+import { useState, useContext } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
+import { UserContext } from '../../contexts/user.context';
+
 
 const defaultFormFields = {
   displayName: "",
@@ -15,6 +17,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
+  const { setCurrentUser } = useContext(UserContext);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -29,15 +32,16 @@ const SignUpForm = () => {
       alert("password do not match");
       return;
     }
-
     try {
       const { user } = await createAuthUserWithEmailAndPassword(
         displayName,
         email,
         password
       );
+      setCurrentUser(user);
       resetFormFields();
       await createUserDocumentFromAuth(user, { displayName });
+      
     } catch (error) {
       if (error.code === "auth/email-already-in-use")
         alert("Cannot create user, email already in use.");
@@ -49,11 +53,11 @@ const SignUpForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
   return (
-    <div className="sign-up-container">
-      <h2>Don't have an account?</h2>
+    <div className='sign-up-container'>
+    <h2>Don't have an account?</h2>
       <span>Create a new account to recieve better deals.</span>
       <form onSubmit={handleSubmit}>
-        <FormInput
+      <FormInput
           label="Display Name"
           type="text"
           required
@@ -69,7 +73,7 @@ const SignUpForm = () => {
           name="email"
           value={email}
         />
-        <FormInput
+       <FormInput
           label="Password"
           type="password"
           required
@@ -87,6 +91,7 @@ const SignUpForm = () => {
         />
         <Button type="submit">Sign Up</Button>
       </form>
+      
     </div>
   );
 };
