@@ -1,0 +1,20 @@
+.cart-item-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .cart-img {
+        width: 50px;
+        
+    }
+
+    & h3 {
+        color: black;
+        
+    }
+
+    & span {
+        color: black;
+    }
+}
+

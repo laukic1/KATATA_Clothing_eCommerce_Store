@@ -10,7 +10,7 @@
     background-color: rgba(231, 231, 231, 0.4);
     padding-bottom: 1em;
     box-shadow: 0 0 5px rgb(179, 178, 178);
-    transition: 0.3s ease all;
+    transition: 0.3s ease ease-in-out;
   
     &.product-card-container:hover {
       transform: scaleX(1.01)
@@ -23,7 +23,7 @@
       margin-bottom: 5px;
       border-radius: 5px 5px 0 0;
       box-shadow: 0 0 5px rgb(179, 178, 178);
-      transition: 0.3s ease all;
+      transition: 0.3s ease ease-in-out;
     }
   
     button {
@@ -38,7 +38,7 @@
     &:hover {
       img {
         opacity: 0.8;
-        
+        transition: 0.3s ease ease-in-out;
       }
   
       button {
