@@ -6,7 +6,6 @@ import {
   signInWithGoogleRedirect,
   auth,
   signInAuthWithEmailAndPassword,
-  createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 
@@ -22,7 +21,7 @@ const SignInForm = () => {
   const signInHandle = async (event) => {
     event.preventDefault();
     try {
-      const { user } = await signInAuthWithEmailAndPassword(email, password);
+      await signInAuthWithEmailAndPassword(email, password);
       setFormFields(defaultFormFields);
     } catch (error) {
       if (error.code === "auth/user-not-found") {
