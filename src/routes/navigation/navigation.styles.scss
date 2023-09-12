@@ -29,6 +29,11 @@
       align-items: center;
       justify-content: flex-end;
     
+    & #Capa_1 {
+      background-color: white;
+      border: 1px solid white;
+      width: 30px;
+    }
       & .red {
         color:red;
         text-shadow: 0 0 5px red;
