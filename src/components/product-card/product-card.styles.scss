@@ -13,7 +13,8 @@
     transition: 0.3s ease ease-in-out;
   
     &.product-card-container:hover {
-      transform: scaleX(1.01)
+      transform: scaleX(1.01);
+      cursor: pointer;
     }
 
     img {

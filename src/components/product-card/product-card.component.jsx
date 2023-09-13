@@ -1,14 +1,14 @@
 import "./product-card.styles.scss";
 import Button from "../button/button.component";
-import { CartContext } from "../../contexts/cart.context";
 import { useContext } from "react";
+import { CartContext } from "../../contexts/cart.context";
 
 const ProductCard = ({ product }) => {
     const { imageUrl, name, price } = product;
 
-const { addItemToCart } = useContext(CartContext);
+  const { addItemToCart } = useContext(CartContext)
 
-const addItemToCartHandler = () => addItemToCart(product)
+  const addItemToCartHandler = () => addItemToCart(product);
     
   return (
     <div className="product-card-container">
