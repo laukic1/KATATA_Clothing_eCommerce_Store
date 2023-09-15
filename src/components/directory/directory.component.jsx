@@ -1,4 +1,4 @@
-import "./directory.styles.scss";
+import { CategoriesSection, Banner, CustomerBanners, CategoriesBanners, BannerText} from "./directory.styles.jsx";
 import DirectoryItem from "../directory-item/directory-item.component";
 import { ReactComponent as CustomerIcon1 } from "../../assets/customer-service1.svg";
 import { ReactComponent as CustomerIcon2 } from "../../assets/customer-service2.svg";
@@ -6,28 +6,28 @@ import { ReactComponent as CustomerIcon3 } from "../../assets/customer-service3.
 
 const Directory = ({ categories }) => {
   return (
-    <div className="categories-section">
-      <div className="customer-banners">
-        <div className="customer-banner1">
+    <CategoriesSection>
+      <CustomerBanners>
+        <Banner>
           <CustomerIcon1 />
-          <p>Exceptional support</p>
+          <BannerText>Exceptional support</BannerText>
           
-        </div>
-        <div className="customer-banner2">
+        </Banner>
+        <Banner>
           <CustomerIcon2 />
-          <p>High-quality fashion products</p>
-        </div>
-        <div className="customer-banner3">
+          <BannerText>High-quality fashion products</BannerText>
+        </Banner>
+        <Banner>
           <CustomerIcon3 />
-          <p>Trending style approved</p>
-        </div>
-      </div>
-      <div id="cat" className="categories-container">
+          <BannerText>Trending style approved</BannerText>
+        </Banner>
+      </CustomerBanners>
+      <CategoriesBanners id='cat'>
         {categories.map((category) => (
           <DirectoryItem key={category.id} category={category} />
         ))}
-      </div>
-    </div>
+      </CategoriesBanners>
+    </CategoriesSection>
   );
 };
 export default Directory;

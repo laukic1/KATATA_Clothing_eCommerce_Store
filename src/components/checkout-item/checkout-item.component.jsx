@@ -1,5 +1,14 @@
 import { useContext } from "react";
-import "./checkout-item.styles.scss";
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  CheckoutItemImage,
+  CheckoutDetails,
+  QuantityCheckoutDetails,
+  ValueCheckoutDetails,
+  IncrementDecrementArrow,
+  RemoveButton,
+} from "./checkout-item.styles.jsx";
 import { CartContext } from "../../contexts/cart.context";
 
 const CheckoutItem = ({ checkoutItem }) => {
@@ -14,23 +23,25 @@ const CheckoutItem = ({ checkoutItem }) => {
 
   return (
     quantity >= 1 && (
-      <div className="checkout-item-container">
-        <div className="image-container">
-          <img className="checkout-img" src={imageUrl} alt={`${name}`} />
-        </div>
-        <span className="name">{name}</span>
-        <span className="quantity">
-          <div onClick={decrementHandler} className="arrow">
+      <CheckoutItemContainer>
+        <ImageContainer>
+          <CheckoutItemImage src={imageUrl} alt={`${name}`} />
+        </ImageContainer>
+        <CheckoutDetails>{name}</CheckoutDetails>
+        <CheckoutDetails>
+        <QuantityCheckoutDetails>
+          <IncrementDecrementArrow onClick={decrementHandler}>
             &#8249;
-          </div>
-         <span className='value'>{quantity}</span> 
-          <div onClick={incrementHandler} className="arrow">
+          </IncrementDecrementArrow>
+         <ValueCheckoutDetails>{quantity}</ValueCheckoutDetails> 
+          <IncrementDecrementArrow onClick={incrementHandler}>
             &#8250;
-          </div>
-        </span>
-        <span className="price">{itemPriceSum}€</span>
-        <div className='remove-button' onClick={removeHandler}>&#10005;</div>
-      </div>
+          </IncrementDecrementArrow>
+        </QuantityCheckoutDetails>
+        </CheckoutDetails>
+        <CheckoutDetails>{itemPriceSum}€</CheckoutDetails>
+        <RemoveButton onClick={removeHandler}>&#10005;</RemoveButton>
+      </CheckoutItemContainer>
     )
   );
 };

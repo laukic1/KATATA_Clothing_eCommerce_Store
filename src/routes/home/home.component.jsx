@@ -1,17 +1,24 @@
-import '../../App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import Directory from '../../components/directory/directory.component';
-import { useEffect } from "react";
+
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import Directory from "../../components/directory/directory.component";
+import { useEffect, Fragment } from "react";
 import { Outlet } from "react-router-dom";
 
-const Home = () => {
+import {
+  HeroContainer,
+  HeroImage,
+  HeroBodyImg,
+  HeroBodyImg2,
+  HeroTitle,
+  StyledFontAwesomeDownArrow,
+} from "./home.styles";
 
+const Home = () => {
   const categories = [
     {
       id: 1,
       title: "hats",
-      imageUrl: "https://i.ibb.co/ngBFFNc/category-img-hats.png" ,
+      imageUrl: "https://i.ibb.co/ngBFFNc/category-img-hats.png",
     },
     {
       id: 2,
@@ -21,7 +28,7 @@ const Home = () => {
     {
       id: 3,
       title: "sneakers",
-      imageUrl: "https://i.ibb.co/fG61Cx6/category-img-sneakers.png" ,
+      imageUrl: "https://i.ibb.co/fG61Cx6/category-img-sneakers.png",
     },
     {
       id: 4,
@@ -31,7 +38,7 @@ const Home = () => {
     {
       id: 5,
       title: "mens",
-      imageUrl: "https://i.ibb.co/stD9GTB/category-img-mens.png" ,
+      imageUrl: "https://i.ibb.co/stD9GTB/category-img-mens.png",
     },
   ];
 
@@ -40,33 +47,41 @@ const Home = () => {
       setTimeout(() => {
         window.scrollTo(0, 0);
       }, 0);
-      }
-    
-    scrollToTop();
+    };
 
-  }, [])
+    scrollToTop();
+  }, []);
 
   const scrollToSection = () => {
-    const scrollToSection = document.getElementById('cat');
-    scrollToSection.scrollIntoView({ behavior: 'smooth' });
-  }
+    const scrollToSection = document.getElementById("cat");
+    scrollToSection.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
+    <Fragment>
+      <Outlet />
+      <HeroContainer>
+        <HeroImage />
+        <HeroBodyImg
+          src="https://i.ibb.co/StxB6dq/hero-img-min-3.png"
+          alt="hero-body"
+        />
+        <HeroBodyImg2
+          src="https://i.ibb.co/bR3fg55/hero-img-min2.png"
+          alt="hero-body"
+        />
+        <HeroTitle>KATATA CLOTHING</HeroTitle>
+        <StyledFontAwesomeDownArrow
+          icon={faAngleDown}
+          size="2xl"
+          style={{ color: "#000000" }}
+          onClick={scrollToSection}
+        />
+      </HeroContainer>
 
-   <div> 
-   <Outlet />
-    <div className='hero-container'>
-
-      <div className='hero-image'  />
-     <img className='hero-body-img' src="https://i.ibb.co/StxB6dq/hero-img-min-3.png" alt='hero-body' />
-     <img className='hero-body-img2' src="https://i.ibb.co/bR3fg55/hero-img-min2.png"  alt='hero-body' />
-     <h1 className='title-hero'>KATATA CLOTHING</h1>
-     <FontAwesomeIcon className='arrow-icon' icon={faAngleDown} size="2xl" style={{color: "#000000",}} onClick={scrollToSection} />
-    </div>
-    <div className='carousel'></div>
-  <Directory categories={categories} />
-  </div>
-  ) 
+      <Directory categories={categories} />
+    </Fragment>
+  );
 };
 
 export default Home;

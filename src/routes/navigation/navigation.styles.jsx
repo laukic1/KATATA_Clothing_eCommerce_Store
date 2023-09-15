@@ -1,5 +1,8 @@
-.navigation {
-    height: 80px;
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const NavigationContainer = styled.div`
+height: 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -14,42 +17,35 @@
     box-shadow: 0 0 10px black;
     opacity: 0.95;
     transition: background-color 0.3s, opacity 0.3s;
-  
-    & .logo-container {
+`
+
+export const LogoContainer = styled(Link)`
       height: 100%;
       width: 70px;
       padding: 15px 15px;
-      
-    }
-  
-    & .nav-links-container {
+`
+
+export const NavLinks = styled.div`
       width: 50%;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
-    
-    & #Capa_1 {
-      background-color: white;
-      border: 1px solid white;
-      width: 30px;
-    }
-      & .red {
-        color:red;
-        text-shadow: 0 0 5px red;
-        transition: ease all;
-      }
+`
 
-      & .nav-link {
+export const NavLink = styled(Link)`
         padding: 10px 15px;
         cursor: pointer;
-      
 
-        &.nav-link:hover {
+        &:hover {
           color: rgb(203, 203, 203);
           text-shadow: 0 0 1px rgb(203, 203, 203);
         }
-      }
-    }
-  }
-  
+`
+
+export const SignOutLinkRed = styled(Link)`
+        color:red;
+        text-shadow: 0 0 5px red;
+        transition: ease all;
+`
+

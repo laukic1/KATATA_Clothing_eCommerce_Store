@@ -1,5 +1,5 @@
 import Button from '../button/button.component';
-import './sign-up-form.styles.scss'
+import {SignUpContainer, SignUpTitle } from './sign-up-form.styles.jsx'
 import { useState, useContext } from "react";
 import {
   createAuthUserWithEmailAndPassword,
@@ -53,8 +53,8 @@ const SignUpForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
   return (
-    <div className='sign-up-container'>
-    <h2>Don't have an account?</h2>
+    <SignUpContainer>
+    <SignUpTitle>Don't have an account?</SignUpTitle>
       <span>Create a new account to recieve better deals.</span>
       <form onSubmit={handleSubmit}>
       <FormInput
@@ -92,7 +92,7 @@ const SignUpForm = () => {
         <Button type="submit">Sign Up</Button>
       </form>
       
-    </div>
+    </SignUpContainer>
   );
 };
 
