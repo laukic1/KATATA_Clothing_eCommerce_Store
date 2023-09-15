@@ -14,33 +14,6 @@ import {
 } from "./home.styles";
 
 const Home = () => {
-  const categories = [
-    {
-      id: 1,
-      title: "hats",
-      imageUrl: "https://i.ibb.co/ngBFFNc/category-img-hats.png",
-    },
-    {
-      id: 2,
-      title: "jackets",
-      imageUrl: "https://i.ibb.co/frmRwL6/category-img-jackets.png",
-    },
-    {
-      id: 3,
-      title: "sneakers",
-      imageUrl: "https://i.ibb.co/fG61Cx6/category-img-sneakers.png",
-    },
-    {
-      id: 4,
-      title: "womens",
-      imageUrl: "https://i.ibb.co/YfYsX1c/category-img-womens.png",
-    },
-    {
-      id: 5,
-      title: "mens",
-      imageUrl: "https://i.ibb.co/stD9GTB/category-img-mens.png",
-    },
-  ];
 
   useEffect(() => {
     const scrollToTop = () => {
@@ -48,7 +21,6 @@ const Home = () => {
         window.scrollTo(0, 0);
       }, 0);
     };
-
     scrollToTop();
   }, []);
 
@@ -79,7 +51,7 @@ const Home = () => {
         />
       </HeroContainer>
 
-      <Directory categories={categories} />
+      <Directory />
     </Fragment>
   );
 };
