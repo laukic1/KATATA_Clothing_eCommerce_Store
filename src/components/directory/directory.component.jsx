@@ -1,5 +1,5 @@
 import "./directory.styles.scss";
-import CategoryItem from "../category-item/category-item.component";
+import DirectoryItem from "../directory-item/directory-item.component";
 import { ReactComponent as CustomerIcon1 } from "../../assets/customer-service1.svg";
 import { ReactComponent as CustomerIcon2 } from "../../assets/customer-service2.svg";
 import { ReactComponent as CustomerIcon3 } from "../../assets/customer-service3.svg";
@@ -24,7 +24,7 @@ const Directory = ({ categories }) => {
       </div>
       <div id="cat" className="categories-container">
         {categories.map((category) => (
-          <CategoryItem key={category.id} category={category} />
+          <DirectoryItem key={category.id} category={category} />
         ))}
       </div>
     </div>
