@@ -7,9 +7,8 @@ export const CustomerBanners = styled.div`
 display: flex;
     justify-content:space-evenly;
     align-items: center;
-    padding: 0 20px 0 20px;
     width: 100%;
-    height: 15vh;
+    padding: 20px;
     background-color: rgba(81, 80, 80, 0.5);
     margin-bottom: 15px;
     box-shadow: 0 0 5px 1px black;

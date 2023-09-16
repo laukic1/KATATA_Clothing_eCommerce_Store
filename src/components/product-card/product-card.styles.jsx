@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const ProductImage = styled.img`
+ width: 100%;
+      height: 90%;
+      object-fit: cover;
+      margin-bottom: 5px;
+      border-radius: 5px 5px 0 0;
+      box-shadow: 0 0 5px rgb(179, 178, 178);
+      transition: 0.3s ease ease-in-out;   
+`
+
 export const ProductCardContainer = styled.div`
  width: 100%;
     display: flex;
@@ -12,7 +22,7 @@ export const ProductCardContainer = styled.div`
     background-color: rgba(231, 231, 231, 0.4);
     padding-bottom: 1em;
     box-shadow: 0 0 5px rgb(179, 178, 178);
-    transition: 0.3s ease ease-in-out;
+    transition: 0.3s ease all;
     
     
     button {
@@ -29,9 +39,11 @@ export const ProductCardContainer = styled.div`
       transform: scaleX(1.01);
       cursor: pointer;
 
-      ProductImage {
+      ${ProductImage} {
         opacity: 0.8;
-        transition: 0.3s ease ease-in-out;
+        
+        filter: grayscale(40%);
+      filter: blur(0.5px);
       }
   
       button {
@@ -41,16 +53,6 @@ export const ProductCardContainer = styled.div`
     }
 
     
-`
-
-export const ProductImage = styled.img`
- width: 100%;
-      height: 90%;
-      object-fit: cover;
-      margin-bottom: 5px;
-      border-radius: 5px 5px 0 0;
-      box-shadow: 0 0 5px rgb(179, 178, 178);
-      transition: 0.3s ease ease-in-out;   
 `
 
 export const ImageFooter = styled.div`

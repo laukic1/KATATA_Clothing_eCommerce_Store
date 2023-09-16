@@ -1,7 +1,6 @@
-
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Directory from "../../components/directory/directory.component";
-import { useEffect, Fragment } from "react";
+import { useEffect, Fragment, useRef } from "react";
 import { Outlet } from "react-router-dom";
 
 import {
@@ -24,9 +23,12 @@ const Home = () => {
     scrollToTop();
   }, []);
 
+  const catSectionRef = useRef(null)
+
   const scrollToSection = () => {
-    const scrollToSection = document.getElementById("cat");
-    scrollToSection.scrollIntoView({ behavior: "smooth" });
+    if(catSectionRef.current) {
+      catSectionRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
   };
 
   return (
@@ -51,7 +53,7 @@ const Home = () => {
         />
       </HeroContainer>
 
-      <Directory />
+      <Directory catSectionRef={catSectionRef} />
     </Fragment>
   );
 };

@@ -3,6 +3,7 @@ import DirectoryItem from "../directory-item/directory-item.component";
 import { ReactComponent as CustomerIcon1 } from "../../assets/customer-service1.svg";
 import { ReactComponent as CustomerIcon2 } from "../../assets/customer-service2.svg";
 import { ReactComponent as CustomerIcon3 } from "../../assets/customer-service3.svg";
+import { Fragment } from "react";
 
 
 const categories = [
@@ -38,9 +39,9 @@ const categories = [
   },
 ];
 
-const Directory = () => {
+const Directory = ({ catSectionRef }) => {
   return (
-    <CategoriesSection>
+    <CategoriesSection ref={catSectionRef}>
       <CustomerBanners>
         <Banner>
           <CustomerIcon1 />
@@ -56,7 +57,7 @@ const Directory = () => {
           <BannerText>Trending style approved</BannerText>
         </Banner>
       </CustomerBanners>
-      <CategoriesBanners id='cat'>
+      <CategoriesBanners>
         {categories.map((category) => (
           <DirectoryItem key={category.id} category={category} />
         ))}
