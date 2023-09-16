@@ -34,6 +34,11 @@ const categoryLinks = [
     imageUrl: "https://i.ibb.co/stD9GTB/category-img-mens.png",
     route: 'shop/mens'
   },
+  {
+    id: 6,
+    title: "best sellers",
+    route: 'shop/best sellers'
+  }
 ];
 
 

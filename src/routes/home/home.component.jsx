@@ -2,7 +2,6 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Directory from "../../components/directory/directory.component";
 import { useEffect, Fragment, useRef } from "react";
 import { Outlet } from "react-router-dom";
-
 import {
   HeroContainer,
   HeroImage,
@@ -11,6 +10,8 @@ import {
   HeroTitle,
   StyledFontAwesomeDownArrow,
 } from "./home.styles";
+
+import BestSellersPreview from "../best-sellers-preview/best-sellers-preview.component";
 
 const Home = () => {
 
@@ -54,6 +55,7 @@ const Home = () => {
       </HeroContainer>
 
       <Directory catSectionRef={catSectionRef} />
+     <BestSellersPreview /> 
     </Fragment>
   );
 };
