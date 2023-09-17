@@ -27,13 +27,13 @@ const Navigation = () => {
         </LogoContainer>
         <NavLinks>
           <NavLink to="/shop">SHOP</NavLink>
-          <NavLink to="/">
+          {/* <NavLink to="/">
             <FontAwesomeIcon
               icon={faSearch}
               size="lg"
               style={{ color: "#ffffff" }}
             />
-          </NavLink>
+          </NavLink> */}
           {currentUser ? (
             <NavLink as='span' onClick={signOutUser}>
               <SignOutLinkRed>SIGN OUT</SignOutLinkRed>

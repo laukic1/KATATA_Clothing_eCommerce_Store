@@ -7,7 +7,7 @@ import Checkout from "./routes/checkout/checkout.component";
 import ScrollToTop from "./routes/scroll-restoration/scroll-restoration.component";
 import Footer from "./routes/footer/footer.component";
 import { Fragment } from "react";
-
+import PaymentRedirect from "./routes/payment-redirect/payment-redirect.component";
 
 
 const App = () => {
@@ -21,6 +21,8 @@ const App = () => {
         <Route path="shop/*" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path='redirect' element={<PaymentRedirect />} />
+       
         </Route>
       </Route>
     </Routes>

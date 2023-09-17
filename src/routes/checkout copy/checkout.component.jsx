@@ -6,10 +6,9 @@ import {
   PaymentContainer
 } from "./checkout.styles.jsx";
 import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
-import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import { CartContext } from "../../contexts/cart.context.jsx";
+import CheckoutItem from "../../components/checkout-item/checkout-item.component.jsx";
 import PaymentForm from "../../components/payment-form/payment-form.component.jsx";
-
 
 const Checkout = () => {
   const { cartItems, checkoutPrice } = useContext(CartContext);

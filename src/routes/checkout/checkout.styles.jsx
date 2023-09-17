@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
 export const CheckoutContainer = styled.div`
-  width: 60%;
+  width:60%;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 50px auto 0;
   padding: 25px;
+  padding-bottom: 3em;
   border-radius: 5px;
   border: 1px solid black;
   box-shadow: 0 0 15px darkgrey;
   background: rgba(100, 100, 100, 0.1);
+  
 `;
 
 export const CheckoutHeader = styled.div`
@@ -37,7 +39,11 @@ export const HeaderBlock = styled.div`
 export const Total = styled.span`
   margin-top: 30px;
   margin-left: auto;
-  font-size: 36px;
+  font-size: 26px;
+  
 `;
 
+export const PaymentContainer = styled.div`
+margin-top: 5em;
+`
 
