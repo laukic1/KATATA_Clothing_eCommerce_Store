@@ -79,7 +79,7 @@ const SignInForm = () => {
             buttonType={BUTTON_TYPE_CLASSES.google}
             onClick={signInWithGoogleRedirect}
           >
-            <GoogleIcon /> Sign In
+            <GoogleIcon />
           </Button>
         </ButtonsContainer>
       </form>
