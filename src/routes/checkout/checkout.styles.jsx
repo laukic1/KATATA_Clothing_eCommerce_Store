@@ -14,6 +14,14 @@ export const CheckoutContainer = styled.div`
   box-shadow: 0 0 15px darkgrey;
   background: rgba(100, 100, 100, 0.1);
   
+  @media (max-width: 768px) {
+    width: 90%;
+    
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 90%;
+    
+  }
 `;
 
 export const CheckoutHeader = styled.div`
@@ -24,6 +32,21 @@ export const CheckoutHeader = styled.div`
   border-bottom: 1px solid darkgrey;
   background: rgba(150, 150 ,150, 0.2);
   border-radius: 5px 5px 0 0;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    justify-content: space-between;
+    
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 14px;
+    justify-content: space-between;
+    
+    
+  }
+
+  
 `;
 
 export const HeaderBlock = styled.div`
@@ -34,6 +57,23 @@ export const HeaderBlock = styled.div`
   &:last-child {
     width: 8%;
   }
+
+  @media (max-width: 768px) {
+    width: auto;
+
+    &:last-child {
+    width: auto;
+  }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: auto;
+
+    &:last-child {
+    width: auto;
+  }
+  }
+
 `;
 
 export const Total = styled.span`

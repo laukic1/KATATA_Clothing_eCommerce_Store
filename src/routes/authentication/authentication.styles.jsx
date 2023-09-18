@@ -2,15 +2,20 @@ import styled from "styled-components";
 
 export const AuthContainer = styled.div`
   display: flex;
-  width: 1000px;
-  justify-content: space-between;
-  margin: 2em auto;
-  gap: 10em;
+  
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+  gap: 2em;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const SignInFormContainer = styled.div`
   border: 1px solid rgb(179, 179, 179);
-  padding: 1.5em;
+  
   border-radius: 5px;
   background: linear-gradient(to bottom, #e4e2e2, #efefef);
   transition: 0.3s ease all;
@@ -24,7 +29,7 @@ export const SignInFormContainer = styled.div`
 
 export const SignUpFormContainer = styled.div`
   border: 1px solid rgb(179, 179, 179);
-  padding: 1.5em;
+  
   border-radius: 5px;
   background: linear-gradient(to bottom, #e4e2e2, #efefef);
   transition: 0.3s ease all;

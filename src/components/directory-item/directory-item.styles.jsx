@@ -23,7 +23,7 @@ export const DirectoryBodyContainer = styled.div`
 
       h2 {
         font-weight: bold;
-        margin: 0 6px 0;
+        margin: 0 auto;
         font-size: 26px;
         color: #ffffff;
         text-shadow: 0 0 10px rgb(0, 0, 0);

@@ -8,6 +8,7 @@ import {
   signInAuthWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
+import { ReactComponent as GoogleIcon } from '../../assets/google-icon.svg'
 
 const defaultFormFields = {
   email: "",
@@ -78,7 +79,7 @@ const SignInForm = () => {
             buttonType={BUTTON_TYPE_CLASSES.google}
             onClick={signInWithGoogleRedirect}
           >
-            Google Sign In
+            <GoogleIcon /> Sign In
           </Button>
         </ButtonsContainer>
       </form>

@@ -1,5 +1,6 @@
 import {
   CheckoutContainer,
+  RedirectTite
 } from "./payment-redirect.styles.jsx";
 
 const PaymentRedirect = () => {
@@ -8,7 +9,7 @@ const PaymentRedirect = () => {
   return (
     <CheckoutContainer>
 
-      <h2>Payment Successful!</h2>
+      <RedirectTite>Payment Successful!</RedirectTite>
       <p>Great news!</p>
       <span>Your order has been confirmed, products will be shipped on the next working day. </span>
       <br />

@@ -8,30 +8,67 @@ export const CheckoutItemContainer = styled.div`
     padding: 15px 0;
     font-size: 20px;
     align-items: center;
+    
+    
+
+    @media (max-width: 768px) {
+    font-size: 12px;
+    
+
+  }
 `
 
 export const ImageContainer = styled.div`
 width: 23%;
       padding-right: 15px;
+      
+      
 `
 
 export const CheckoutItemImage = styled.img`
-width: 100%;
-        height: 100%;
+        width: 100%;
+        height: 250px;
         border-radius: 5px;
         box-shadow: 0 0 5px darkgrey;
+        object-fit: cover;
+        
+        @media (max-width: 768px) {
+          height: 60px;
+  }
+
+  @media (min-width: 768px) and (max-width:1024px) {
+    height: 150px;
+  }
 `
 
 export const CheckoutDetails = styled.span`
 width: 23%;
+
+
+@media (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+}
+
 `
 export const QuantityCheckoutDetails = styled.span`
 display: flex;
       align-items: center;
+      
 `
 
 export const ValueCheckoutDetails = styled.span`
 margin: 0 10px;
+
 `
 
 export const IncrementDecrementArrow = styled.div`

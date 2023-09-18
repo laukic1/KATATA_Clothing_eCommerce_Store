@@ -55,7 +55,7 @@ const Home = () => {
       </HeroContainer>
 
       <Directory catSectionRef={catSectionRef} />
-     <BestSellersPreview /> 
+      <BestSellersPreview />  
     </Fragment>
   );
 };

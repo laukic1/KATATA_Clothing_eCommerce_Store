@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
+
+
 export const ProductImage = styled.img`
  width: 100%;
-      height: 90%;
+      height: 250px;
       object-fit: cover;
       margin-bottom: 5px;
       border-radius: 5px 5px 0 0;
@@ -32,10 +34,20 @@ export const ProductCardContainer = styled.div`
       top: 175px;
       display: none;
       border-radius: 3px;
+
+      @media (max-width: 1024px) {
+        width: 80%;
+      opacity: 0.7;
+      position: absolute;
+      top: 175px;
+      display: block;
+      border-radius: 3px;
+
+      }
     }
 
-
-    &:hover {
+@media (min-width: 1024px) {
+  &:hover {
       transform: scaleX(1.01);
       cursor: pointer;
 
@@ -50,7 +62,11 @@ export const ProductCardContainer = styled.div`
         opacity: 0.85;
         display: flex;
       }
+
+
     }
+}
+    
 
     
 `
@@ -62,16 +78,34 @@ width: 100%;
       justify-content: space-between;
       font-size: 18px;
       padding: 5px;
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 1024px) {
+        font-size: 14px;
+      }
 `
 
 export const FooterName = styled.span`
- width: 90%;
         margin-bottom: 15px;
         color: rgb(70, 70, 70);
+        
+       
 `
 export const FooterPrice = styled.span`
-width: 10%;
         color: rgb(70, 70, 70);
+        
+        
 `
 
+export const ButtonText = styled.span`
+margin-right: 0.5em;
+
+@media (max-width: 1024px) {
+  display: none;
   
+  
+}
+`

@@ -23,6 +23,8 @@ const CheckoutItem = ({ checkoutItem }) => {
 
   return (
     quantity >= 1 && (
+      
+      
       <CheckoutItemContainer>
         <ImageContainer>
           <CheckoutItemImage src={imageUrl} alt={`${name}`} />
@@ -42,6 +44,8 @@ const CheckoutItem = ({ checkoutItem }) => {
         <CheckoutDetails>{itemPriceSum}€</CheckoutDetails>
         <RemoveButton onClick={removeHandler}>&#10005;</RemoveButton>
       </CheckoutItemContainer>
+      
+      
     )
   );
 };

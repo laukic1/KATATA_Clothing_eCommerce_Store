@@ -72,6 +72,18 @@ export const HeroBodyImg = styled.img`
   z-index: 1;
   animation: ${Image1Animation} 1.5s ease-in-out,
     ${Img1Animation} 5s infinite ease-in-out 1.5s;
+
+    @media (max-width: 768px) {
+        height: 20vh;
+        width: 90vw;
+        top: 50%;
+    }
+
+    @media (min-width:768px) and (max-width: 1024px) {
+        height: 40vh;
+        width: 100vw;
+        top: 30%;
+    }
 `;
 
 export const Image2Animation = keyframes`
@@ -111,6 +123,18 @@ export const HeroBodyImg2 = styled.img`
   z-index: 1;
   animation: ${Image2Animation} 1.5s ease-in-out,
     ${Img2Animation} 4s infinite ease-in-out 1.5s;
+
+    @media (max-width: 768px) {
+        height: 20vh;
+        width: 90vw;
+        top: 50%;
+    }
+
+    @media (min-width:768px) and (max-width: 1024px) {
+        height: 40vh;
+        width: 100vw;
+        top: 30%;
+    }
 `;
 
 export const TitleAnimation = keyframes`
@@ -118,7 +142,7 @@ export const TitleAnimation = keyframes`
         transform: translateY(100%);
         opacity: 0;
     }
-    80% {
+    60% {
         transform: translateY(100%);
         opacity: 0;
     }
@@ -134,13 +158,19 @@ export const TitleAnimation = keyframes`
 `;
 
 export const HeroTitle = styled.h1`
+text-align: center;
   position: absolute;
   z-index: 2;
   font-size: 4em;
   color: rgb(0, 0, 0);
   text-shadow: 0 0 3px black;
   top: 20%;
-  animation: ${TitleAnimation} 2s ease all;
+  animation: ${TitleAnimation} 2s ease-in-out;
+
+  @media (max-width: 768px) {
+        font-size: 3em;
+        top: 30%;
+    }
 `;
 
 export const ArrowAnimation = keyframes`
