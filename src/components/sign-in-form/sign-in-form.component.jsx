@@ -1,24 +1,38 @@
-import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
+//import styled components for styling
 import { SignInContainer, SignInTitle, ButtonsContainer } from "./sign-in-form.styles.jsx";
-import React, { useState, useEffect } from "react";
-import { getRedirectResult } from "firebase/auth";
+
+//import methods from firebase utils and firebase/auth that are handling user authentication
 import {
   signInWithGoogleRedirect,
   auth,
   signInAuthWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
+import { getRedirectResult } from "firebase/auth";
+
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
+
+//import hooks
+import React, { useState, useEffect } from "react";
+
+//import FormInput component for sign in authentication
 import FormInput from "../form-input/form-input.component";
+
+//import google icon SVG
 import { ReactComponent as GoogleIcon } from '../../assets/google-icon.svg'
 
+//object with inital values of form inputs
 const defaultFormFields = {
   email: "",
   password: "",
 };
 
+//Component that handles the information in input fields for user authentication with firebase database
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
+  //sign in handler that asynchronously requests sign in authentication with email and password
+  //if there is error it catches it and handles it based on the error code
   const signInHandle = async (event) => {
     event.preventDefault();
     try {
@@ -35,6 +49,7 @@ const SignInForm = () => {
     }
   };
 
+  //with useEffect hook this function handles redirected sign in with google that is initiated when component mounts, that way user auth is retrieved when the user redirects from google back to the website
   useEffect(() => {
     const logGoogleRedirectUser = async () => {
       try {
@@ -46,6 +61,7 @@ const SignInForm = () => {
     logGoogleRedirectUser();
   }, []);
 
+  //handles the change in input fields so that user can sign in with email and password which is passed to signInHandle method.
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });

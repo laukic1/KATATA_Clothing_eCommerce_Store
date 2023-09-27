@@ -66,6 +66,7 @@ const removeCheckoutItem = (cartItems, itemToClear) => {
   return [...cartItems, { ...itemToClear, quantity: 0 }];
 };
 
+
 export const CartContext = createContext({
   cartDropdown: false,
   setCartDropdown: () => {},
@@ -77,42 +78,55 @@ export const CartContext = createContext({
   removeItem: () => {},
 });
 
+//This provider provides context for managing the shopping cart state-
 export const CartProvider = ({ children }) => {
+  // State for managing the visibility of the cart dropdown
   const [cartDropdown, setCartDropdown] = useState(false);
+
+  // State for managing cart items
   const [cartItems, setCartItems] = useState([]);
+
+  // State for keeping track of the total number of items in the cart
   const [cartCount, setCartCount] = useState(0);
+  
+  // State for keeping track of the total checkout price
   const [checkoutPrice, setCheckoutPrice] = useState(0);
 
+  // useEffect to update cartCOunt when cartItems change
   useEffect(() => {
     const cartCountNumber = () =>
       cartItems.reduce((accumulator, item) => accumulator + item.quantity, 0);
     setCartCount(cartCountNumber);
   }, [cartItems]);
 
+  // Function to add an item to the cart
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
   };
 
+  // Function to increment the quantity of an item in the cart
   const incrementItem = (productToAdd) => {
     setCartItems(incrementCheckoutItem(cartItems, productToAdd));
   };
 
+  // Function to decrement the quantity of an item in the cart
   const decrementItem = (productToRemove) => {
     setCartItems(decrementCheckoutItem(cartItems, productToRemove));
   };
 
+  // Function to remove an item from the cart
   const removeItem = (itemToClear) => {
     setCartItems(removeCheckoutItem(cartItems, itemToClear));
   };
 
-  
+  // useEffect to update checkoutPrice when cartItems change
   useEffect(() => {
     const totalPrice = () =>
       cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     setCheckoutPrice(totalPrice);
   }, [cartItems]);
 
-  
+  // Context value to be provided to other components
   const value = {
     removeItem,
     decrementItem,

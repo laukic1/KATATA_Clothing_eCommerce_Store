@@ -1,3 +1,4 @@
+
 import { CategoryPageContainer, CategoryTitle } from "./category.styles.jsx";
 import { useParams } from "react-router-dom";
 import { Fragment, useContext, useState, useEffect } from "react";

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//buttons styling
 export const BaseButton = styled.button`
  min-width: 165px;
     width: auto;
@@ -49,6 +50,7 @@ background-color: white;
       }
 `
 
+//Spinner effect styling
 export const SpinnerOverlay = styled.div`
   height: 60vh;
   width: 100%;

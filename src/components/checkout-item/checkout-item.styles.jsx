@@ -9,12 +9,8 @@ export const CheckoutItemContainer = styled.div`
     font-size: 20px;
     align-items: center;
     
-    
-
     @media (max-width: 768px) {
     font-size: 12px;
-    
-
   }
 `
 
@@ -41,6 +37,7 @@ export const CheckoutItemImage = styled.img`
   }
 `
 
+//Checkout item details that represent multiple values styles(quantity, name, price)
 export const CheckoutDetails = styled.span`
 width: 23%;
 
