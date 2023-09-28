@@ -1,8 +1,10 @@
+// Import styled components for styling
 import {
   CheckoutContainer,
   RedirectTite
 } from "./payment-redirect.styles.jsx";
 
+// Component is displayed after user made a successful payment
 const PaymentRedirect = () => {
   
 

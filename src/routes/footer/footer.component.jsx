@@ -1,8 +1,15 @@
+// Importing styles
 import "./footer.styles.scss";
+
 import { Fragment } from "react";
+
+// Importing Outlet component for relevant data rendering
 import { Outlet } from "react-router-dom";
+
+// Importing useNavigate hook for routing
 import { useNavigate } from "react-router-dom";
 
+//Array of objects primarly used for footer links
 const categoryLinks = [
   {
     id: 1,
@@ -42,10 +49,12 @@ const categoryLinks = [
 ];
 
 
-
+// Component that renders footer of the website
 const Footer = () => {
+  // Storing hook inside footerNavigate
   const footerNavigate = useNavigate();
 
+  // Route handler
   const footerNavigateHandler = (route) => footerNavigate(route);
 
   return (
@@ -67,6 +76,7 @@ const Footer = () => {
           </div>
           <div className="column">
             <h3>Shop</h3>
+            {/* Mapping through categoryLinks array, and then displaying title of objects which are routing to coresponding category products */}
             {
               categoryLinks.map((item) => {
                return <span className='footer-link' onClick={() => footerNavigateHandler(item.route)} key={item.id}>{item.title}</span>

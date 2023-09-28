@@ -13,6 +13,7 @@ import PaymentRedirect from "./routes/payment-redirect/payment-redirect.componen
 const App = () => {
   return (
     <Fragment>
+    {/* Everytime user goes to another page, users scroll view starts at the top */}
     <ScrollToTop />
     <Routes>
       <Route path="/" element={<Navigation />}>
