@@ -2,11 +2,15 @@
 import {
   HeroContainer,
   HeroImage,
-  HeroBodyImg,
-  HeroBodyImg2,
+  HeroSign,
+  HeroOverlay,
   HeroTitle,
   StyledFontAwesomeDownArrow,
 } from "./home.styles";
+
+import Button, { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
+
+import heroImg from '../../assets/hero.png';
 
 // Importing SVG arrow icon for scrolling to section functionality
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
@@ -15,12 +19,11 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, Fragment, useRef } from "react";
 
 //Importing outlet component for displaying relevant content
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 //importing relevant components for home route
 import Directory from "../../components/directory/directory.component";
 import BestSellersPreview from "../best-sellers-preview/best-sellers-preview.component";
-
 //Component for rendering index page/homepage
 const Home = () => {
 
@@ -34,40 +37,32 @@ const Home = () => {
     scrollToTop();
   }, []);
 
-// useRef is used to create a reference to a DOM element, initially set to null
-  const catSectionRef = useRef(null)
-
-// It checks if catSectionRef.current is truthy, if it is it scrolls into view smoothly
-  const scrollToSection = () => {
-    if(catSectionRef.current) {
-      catSectionRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
-  };
 
   return (
     <Fragment>
       <Outlet />
+      
       <HeroContainer>
-        <HeroImage />
-        <HeroBodyImg
-          src="https://i.ibb.co/StxB6dq/hero-img-min-3.png"
-          alt="hero-body"
-        />
-        <HeroBodyImg2
-          src="https://i.ibb.co/bR3fg55/hero-img-min2.png"
-          alt="hero-body"
-        />
+      <HeroOverlay>
+        <HeroImage src={heroImg}
+          alt="hero-body1" />
+       </HeroOverlay>
         <HeroTitle>KATATA CLOTHING</HeroTitle>
+        <h2>UNISEX HATS</h2>
         {/* Arrow element used for scrolling behavior */}
-        <StyledFontAwesomeDownArrow
-          icon={faAngleDown}
-          size="2xl"
-          style={{ color: "#000000" }}
-          onClick={scrollToSection}
-        />
+        <HeroSign>
+        
+        <Link to='shop/hats'><Button
+        buttonType={BUTTON_TYPE_CLASSES.base}
+      >Shop Now</Button></Link></HeroSign>
+       
+       
+     
+       
+
       </HeroContainer>
     {/* Directory with reference prop passed for scrolling behavior */}
-      <Directory catSectionRef={catSectionRef} />
+      <Directory />
       <BestSellersPreview />  
     </Fragment>
   );

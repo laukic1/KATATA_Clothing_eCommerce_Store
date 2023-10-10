@@ -23,7 +23,7 @@ const DirectoryItem = ({ category }) => {
       <BackgroundImage imageUrl={imageUrl} />
       <DirectoryBodyContainer>
         <h2>{title}</h2>
-        <p>Shop Now</p>
+        
       </DirectoryBodyContainer>
     </DirectoryItemContainer>
   );

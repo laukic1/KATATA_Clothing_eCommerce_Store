@@ -1,141 +1,80 @@
 import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
+
+export const HeroSign = styled.div`
+ width: 100%;
+    opacity: 1;
+    position: absolute;
+    display: flex;
+    
+    justify-content: center;
+
+
+`
+    
+
+
+export const HeroImage = styled.img`
+ width: 100%;
+  height: 100%;
+  object-fit: cover; // or 'contain' based on your preference
+  box-shadow: inset 0 0 200px black;
+  opacity: 0.5;
+  
+  
+
+`;
+export const HeroOverlay = styled.div`
+  width: 100vw;
+  height: 100vh;
+    background-color: black;
+  background-size: 100%;
+  z-index: -1;
+  
+ 
+`;
+
 export const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 5vh;
-`;
+  
+  overflow: hidden;
 
-export const BackgroundAnimation = keyframes`
- 0% {
-        transform: scale(1);
-        background-position: 250% 0;
-    }
-    50% {
-        
-        background-position: 200% 0;
-    }
-    100% {
-        transform: scale(1);
-        background-position: 250% 0;
-    }
-`;
+ 
+  
 
-export const HeroImage = styled.div`
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: linear-gradient(to bottom, #e4e2e2, #ffffff);
-  animation: ${BackgroundAnimation} 10s infinite ease-in-out;
-  background-size: 500%;
-  z-index: -1;
-`;
+  &:hover ${HeroImage}  {
+        box-shadow: none;
+        filter: none;
+        transform: scale(1.1);
+        transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      }
+  
 
-export const Image1Animation = keyframes`
-0% {
-        transform: translate(-34%,250%);
-        
-    }
-    30% {
-        transform: translate(1%,-10%);
-        
-    }
-    90% {
-        transform: translate(0);
-        
-    }
-    100% {
-        transform: translate(0);
-    }
-`;
-
-export const Img1Animation = keyframes`
- 0% {
-        transform: translate(0)
-    }
-    50% {
-        transform: translate(-0.2%,1%)
-    }
-    100% {
-        transform: translate(0);
-    }
-`;
-
-export const HeroBodyImg = styled.img`
-  width: 50vw;
-  padding: 0;
-  margin: 0;
-  height: 50vh;
-  position: absolute;
-  z-index: 1;
-  animation: ${Image1Animation} 1.5s ease-in-out,
-    ${Img1Animation} 5s infinite ease-in-out 1.5s;
+  h2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4em;
+    width: 40%;
+    opacity: 1;
+    position: absolute;
+    opacity: 1;
+    border-radius: 3px;
+    color: white;
 
     @media (max-width: 768px) {
-        height: 20vh;
-        width: 90vw;
-        top: 50%;
-    }
 
-    @media (min-width:768px) and (max-width: 1024px) {
-        height: 40vh;
-        width: 100vw;
-        top: 30%;
-    }
+  font-size: 20px;
+  padding-bottom: 1em;
+
+  }
+  }
 `;
 
-export const Image2Animation = keyframes`
-0% {
-        transform: translate(34%,-250%)
-    }
-    30% {
-        transform: translate(-1.8%,10%);
-    }
-    90% {
-        transform: translate(0);
-    }
-    
-    100% {
-        transform: translate(0);
-    }
-`;
 
-export const Img2Animation = keyframes`
- 0% {
-        transform: translate(0)
-    }
-    50% {
-        transform: translate(-0.2%,1%);
-    }
-    100% {
-        transform: translate(0);
-    }
-`;
-
-export const HeroBodyImg2 = styled.img`
-  width: 50vw;
-  padding: 0;
-  margin: 0;
-  height: 50vh;
-  position: absolute;
-  z-index: 1;
-  animation: ${Image2Animation} 1.5s ease-in-out,
-    ${Img2Animation} 4s infinite ease-in-out 1.5s;
-
-    @media (max-width: 768px) {
-        height: 20vh;
-        width: 90vw;
-        top: 50%;
-    }
-
-    @media (min-width:768px) and (max-width: 1024px) {
-        height: 40vh;
-        width: 100vw;
-        top: 30%;
-    }
-`;
 
 export const TitleAnimation = keyframes`
 0% {
@@ -162,7 +101,7 @@ text-align: center;
   position: absolute;
   z-index: 2;
   font-size: 4em;
-  color: rgb(0, 0, 0);
+  color: white;
   text-shadow: 0 0 3px black;
   top: 20%;
   animation: ${TitleAnimation} 2s ease-in-out;
@@ -203,5 +142,7 @@ export const StyledFontAwesomeDownArrow = styled(FontAwesomeIcon)`
     cursor: pointer;
     animation: none;
     opacity: 1;
+    
   }
 `;
+

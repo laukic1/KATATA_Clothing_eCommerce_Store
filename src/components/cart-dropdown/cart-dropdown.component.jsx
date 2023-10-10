@@ -40,7 +40,6 @@ const CartDropdown = () => {
 {/* Conditonally rendering message that the cart is empty */}
       <EmptyMessage>
         {cartItems.length === 0 && "Your cart is empty"}
-        {console.log(cartItems.length)}
       </EmptyMessage>
     </CartDropdownContainer>
   );

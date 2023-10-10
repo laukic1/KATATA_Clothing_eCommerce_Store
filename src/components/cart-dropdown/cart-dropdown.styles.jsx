@@ -8,7 +8,8 @@ import {
 
 export const CartDropdownContainer = styled.div`
   position: absolute;
-  width: 240px;
+  width: 300px;
+  max-width: 300px;
   height: 340px;
   max-height: 340px;
   display: flex;
@@ -21,6 +22,9 @@ export const CartDropdownContainer = styled.div`
   z-index: 5;
   border-radius: 5px;
   overflow-y: auto;
+
+  transition: all 0.3s linear;
+  transform-origin: top;
 
   ${BaseButton},
   ${GoogleSignInButton},

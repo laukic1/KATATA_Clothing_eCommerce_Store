@@ -26,7 +26,7 @@ export const DirectoryBodyContainer = styled.div`
         margin: 0 auto;
         font-size: 26px;
         color: #ffffff;
-        text-shadow: 0 0 10px rgb(0, 0, 0);
+        text-shadow: 0 10px 30px rgb(0, 0, 0);
         font-weight: 600;
         letter-spacing: 1px;
       }
@@ -55,7 +55,8 @@ min-width: 30%;
       cursor: pointer;
   
       & ${BackgroundImage} {
-        box-shadow: none;
+              box-shadow: inset 0 0 100px black;
+
         filter: none;
         transform: scale(1.1);
         transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);

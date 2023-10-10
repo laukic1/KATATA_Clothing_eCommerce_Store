@@ -5,6 +5,7 @@ import {
   NavLink,
   NavLinks,
   LogoContainer,
+  FlexGrow
 } from "./navigation.styles";
 
 // Importing font awesome and SVG icons
@@ -26,7 +27,7 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 // Importing components for cart functionalities
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
-
+import HamburgerIcon from "../../components/hamburger-icon/hamburger-icon.component";
 
 const Navigation = () => {
   // destructuring value from user context for user state management
@@ -36,11 +37,14 @@ const Navigation = () => {
   return (
     <Fragment>
       <NavigationContainer>
+      <HamburgerIcon />
+      <FlexGrow></FlexGrow>
         <LogoContainer to="/">
           <KatataLogo className="logo" />
         </LogoContainer>
+        
         <NavLinks>
-          <NavLink to="/shop">SHOP</NavLink>
+          
 
           {/* <NavLink to="/">
             <FontAwesomeIcon

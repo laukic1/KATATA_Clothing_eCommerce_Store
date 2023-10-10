@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useReducer } from "react";
+import { createAction } from "../utils/create-action/create-action.utils";
 
 const addCartItem = (cartItems, productToAdd) => {
   // find if cartItems contains productToAdd
@@ -22,7 +23,7 @@ const incrementCheckoutItem = (cartItems, productToAdd) => {
   const foundItem = cartItems.find((item) => {
     return item.id === productToAdd.id;
   });
-  
+
   // if found, increment quantity
   if (foundItem) {
     return cartItems.map((cartItem) =>
@@ -45,16 +46,17 @@ const decrementCheckoutItem = (cartItems, productToRemove) => {
   return updatedCartItems.filter((cartItem) => cartItem.quantity > 0);
 };
 
-
 const removeCheckoutItem = (cartItems, itemToClear) => {
   // find if cartItems contains productToAdd
   const foundItem = cartItems.find((item) => {
     return item.id === itemToClear.id;
   });
 
-  const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== itemToClear.id);
+  const updatedCartItems = cartItems.filter(
+    (cartItem) => cartItem.id !== itemToClear.id
+  );
   // if found, increment quantity
-  
+
   if (foundItem) {
     return updatedCartItems.map((cartItem) =>
       cartItem.id === itemToClear.id
@@ -65,7 +67,6 @@ const removeCheckoutItem = (cartItems, itemToClear) => {
   // return new array with modified cartItems/ new cart item
   return [...cartItems, { ...itemToClear, quantity: 0 }];
 };
-
 
 export const CartContext = createContext({
   cartDropdown: false,
@@ -78,53 +79,90 @@ export const CartContext = createContext({
   removeItem: () => {},
 });
 
+export const INITIAL_STATE = {
+  cartDropdown: false,
+  cartCount: 0,
+  checkoutPrice: 0,
+  cartItems: [],
+};
+
+export const CART_ACTION_TYPE = {
+  SET_CART_ITEMS: "SET_CART_ITEMS",
+  SET_CART_DROPDOWN: "SET_CART_DROPDOWN",
+};
+
+const cartReducer = (state, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case CART_ACTION_TYPE.SET_CART_ITEMS:
+      return {
+        ...state,
+        ...payload,
+      }
+      case CART_ACTION_TYPE.SET_CART_DROPDOWN:
+        return {
+          ...state,
+          cartDropdown: payload,
+        }
+
+    default:
+      throw new Error(`Unhandled type ${type} in cartReducer`);
+  }
+};
+
 //This provider provides context for managing the shopping cart state-
 export const CartProvider = ({ children }) => {
   // State for managing the visibility of the cart dropdown
-  const [cartDropdown, setCartDropdown] = useState(false);
 
-  // State for managing cart items
-  const [cartItems, setCartItems] = useState([]);
 
-  // State for keeping track of the total number of items in the cart
-  const [cartCount, setCartCount] = useState(0);
-  
-  // State for keeping track of the total checkout price
-  const [checkoutPrice, setCheckoutPrice] = useState(0);
+  const [{ checkoutPrice, cartDropdown, cartCount, cartItems }, dispatch] = useReducer(
+    cartReducer,
+    INITIAL_STATE
+  );
 
-  // useEffect to update cartCOunt when cartItems change
-  useEffect(() => {
-    const cartCountNumber = () =>
-      cartItems.reduce((accumulator, item) => accumulator + item.quantity, 0);
-    setCartCount(cartCountNumber);
-  }, [cartItems]);
+  const setCartDropdown = (bool) => {
+    dispatch(createAction(CART_ACTION_TYPE.SET_CART_DROPDOWN, bool));
+  }
+
+  const updateCartItemsReducer = (newCartItems) => {
+    
+    const newCartCountNumber = newCartItems.reduce(
+      (accumulator, item) => accumulator + item.quantity,
+      0
+    );
+
+    const newCheckoutPrice = newCartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+
+    dispatch(createAction(CART_ACTION_TYPE.SET_CART_ITEMS, {cartItems :newCartItems, cartCount: newCartCountNumber, checkoutPrice: newCheckoutPrice  } ));
+  };
 
   // Function to add an item to the cart
   const addItemToCart = (productToAdd) => {
-    setCartItems(addCartItem(cartItems, productToAdd));
+    const newCartItems = addCartItem(cartItems, productToAdd);
+    updateCartItemsReducer(newCartItems);
   };
 
   // Function to increment the quantity of an item in the cart
   const incrementItem = (productToAdd) => {
-    setCartItems(incrementCheckoutItem(cartItems, productToAdd));
+    const newCartItems = incrementCheckoutItem(cartItems, productToAdd);
+    updateCartItemsReducer(newCartItems);
   };
 
   // Function to decrement the quantity of an item in the cart
   const decrementItem = (productToRemove) => {
-    setCartItems(decrementCheckoutItem(cartItems, productToRemove));
+    const newCartItems = decrementCheckoutItem(cartItems, productToRemove);
+    updateCartItemsReducer(newCartItems);
   };
 
   // Function to remove an item from the cart
   const removeItem = (itemToClear) => {
-    setCartItems(removeCheckoutItem(cartItems, itemToClear));
+    const newCartItems = removeCheckoutItem(cartItems, itemToClear);
+    updateCartItemsReducer(newCartItems);
   };
-
-  // useEffect to update checkoutPrice when cartItems change
-  useEffect(() => {
-    const totalPrice = () =>
-      cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    setCheckoutPrice(totalPrice);
-  }, [cartItems]);
 
   // Context value to be provided to other components
   const value = {
